@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Πρωινό Πέρασμα – Μενού</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brown-dark: #4a2810;
+  --brown-mid: #6b3e26;
+  --brown-light: #a0673a;
+  --cream: #fdf6ee;
+  --cream-dark: #f0e0c8;
+  --gold: #c9922a;
+  --text-dark: #2a1a0e;
+  --text-light: #7a5a40;
+  --white: #fff;
+  --shadow: 0 8px 32px rgba(74,40,16,0.13);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+}
+
+header {
+  background: var(--brown-dark);
+  color: var(--white);
+  padding: 28px 20px 18px;
+  text-align: center;
+}
+header::after {
+  content: '';
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brown-light), var(--gold), var(--brown-light));
+  margin-top: 18px;
+}
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+header p {
+  font-size: 1rem;
+  color: var(--cream-dark);
+  margin-top: 6px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+nav {
+  background: var(--brown-mid);
+  padding: 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(74,40,16,0.18);
+}
+nav a {
+  color: var(--cream-dark);
+  text-decoration: none;
+  display: inline-block;
+  padding: 14px 22px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.2s, background 0.2s;
+}
+nav a:hover {
+  color: var(--gold);
+  background: rgba(255,255,255,0.07);
+}
+nav a.active {
+  color: var(--gold);
+  border-bottom: 3px solid var(--gold);
+}
+
+.section { padding: 70px 24px; }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--brown-dark);
+}
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brown-light), var(--gold));
+  margin: 0 auto 40px;
+  border-radius: 2px;
+}
+
+#menu { background: var(--white); }
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 28px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.menu-card {
+  background: var(--cream);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.22s, box-shadow 0.22s;
+  border: 1px solid var(--cream-dark);
+}
+.menu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(74,40,16,0.18);
+}
+.menu-card-img {
+  width: 100%;
+  height: 170px;
+  background: var(--cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.menu-card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute; inset: 0;
+}
+.img-placeholder-label {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  position: absolute;
+  bottom: 8px; right: 10px;
+  background: rgba(255,255,255,0.7);
+  padding: 2px 7px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+}
+.menu-card-body { padding: 20px 18px 22px; }
+.menu-card-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--brown-dark);
+  margin-bottom: 6px;
+}
+.menu-card-body .items {
+  font-size: 0.87rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+.menu-card-body .items span {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px dashed var(--cream-dark);
+}
+.menu-card-body .items span:last-child { border-bottom: none; }
+.menu-card-body .items span .price {
+  color: var(--gold);
+  font-weight: 700;
+  white-space: nowrap;
+  margin-left: 8px;
+}
+
+footer {
+  background: var(--brown-dark);
+  color: var(--cream-dark);
+  text-align: center;
+  padding: 22px 20px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+  nav a { padding: 12px 10px; font-size: 13px; }
+  .menu-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Πρωινό Πέρασμα</h1>
+  <p>Το καλύτερο ξεκίνημα της ημέρας</p>
+</header>
+
+<nav>
+  <a href="index.html">Αρχική</a>
+  <a href="proionta.html" class="active">Μενού</a>
+  <a href="index.html#about">Σχετικά</a>
+  <a href="index.html#contact">Επικοινωνία</a>
+</nav>
+
+<!-- ══════════ MENU ══════════ -->
+<section class="section" id="menu">
+  <h2 class="section-title">Το Μενού μας</h2>
+  <div class="section-divider"></div>
+
+  <div class="menu-grid">
+
+    <!-- Καφές -->
+    <div class="menu-card">
+      <div class="menu-card-img">
+        ☕
+        <!-- Για εικόνα: <img src="coffee.jpg" alt="Καφές"> -->
+        <span class="img-placeholder-label">+ εικόνα</span>
+      </div>
+      <div class="menu-card-body">
+        <h3>Καφές</h3>
+        <div class="items">
+          <span>Espresso <span class="price">1.5€</span></span>
+          <span>Cappuccino <span class="price">2,50€</span></span>
+          <span>Freddo Espresso <span class="price">2,30€</span></span>
+          <span>Freddo Cappuccino <span class="price">2,50€</span></span>
+          <span>Αμερικάνο <span class="price">2,30€</span></span>
+          <span>Ελληνικός <span class="price">1,50€</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Σάντουιτς -->
+    <div class="menu-card">
+      <div class="menu-card-img">
+        🥪
+        <!-- Για εικόνα: <img src="sandwich.jpg" alt="Σάντουιτς"> -->
+        <span class="img-placeholder-label">+ εικόνα</span>
+      </div>
+      <div class="menu-card-body">
+        <h3>Σάντουιτς</h3>
+        <div class="items">
+          <span>Τοστ τυρί-ζαμπόν <span class="price">2,50€</span></span>
+          <span>Σαντουιτς κοτόπουλο <span class="price">3,50€</span></span>
+          <span>Club sandwich <span class="price">3,50€</span></span>
+          <span>Bagel τυρί κρέμα <span class="price">3,00€</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Κρουασάν & Γλυκά -->
+    <div class="menu-card">
+      <div class="menu-card-img">
+        🥐
+        <!-- Για εικόνα: <img src="croissant.jpg" alt="Κρουασάν"> -->
+        <span class="img-placeholder-label">+ εικόνα</span>
+      </div>
+      <div class="menu-card-body">
+        <h3>Κρουασάν &amp; Γλυκά</h3>
+        <div class="items">
+          <span>Κρουασάν βουτύρου <span class="price">1,50€</span></span>
+          <span>Κρουασάν σοκολάτας <span class="price">1,50€</span></span>
+          <span>Muffin <span class="price">2,00€</span></span>
+          <span>Κέικ εποχής <span class="price">1,50€</span></span>
+          <span>Cookies <span class="price">2,00€</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Χυμοί & Ροφήματα -->
+    <div class="menu-card">
+      <div class="menu-card-img">
+        🍊
+        <!-- Για εικόνα: <img src="juice.jpg" alt="Χυμοί"> -->
+        <span class="img-placeholder-label">+ εικόνα</span>
+      </div>
+      <div class="menu-card-body">
+        <h3>Χυμοί &amp; Ροφήματα</h3>
+        <div class="items">
+          <span>Χυμός πορτοκάλι <span class="price">3,00€</span></span>
+          <span>Χυμός καρότο-μήλο <span class="price">3,80€</span></span>
+          <span>Smoothie φρούτων <span class="price">4,00€</span></span>
+          <span>Τσάι &amp; αφεψήματα <span class="price">2,50€</span></span>
+          <span>Κακάο <span class="price">2,50€</span></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Πρωινό Πέρασμα &nbsp;·&nbsp; Όλα τα δικαιώματα διατηρούνται</p>
+</footer>
+
+</body>
+</html>

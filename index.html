@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Πρωινό Πέρασμα</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brown-dark: #4a2810;
+  --brown-mid: #6b3e26;
+  --brown-light: #a0673a;
+  --cream: #fdf6ee;
+  --cream-dark: #f0e0c8;
+  --gold: #c9922a;
+  --text-dark: #2a1a0e;
+  --text-light: #7a5a40;
+  --white: #fff;
+  --shadow: 0 8px 32px rgba(74,40,16,0.13);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--brown-dark);
+  color: var(--white);
+  padding: 28px 20px 18px;
+  text-align: center;
+}
+header::after {
+  content: '';
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brown-light), var(--gold), var(--brown-light));
+  margin-top: 18px;
+}
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+header p {
+  font-size: 1rem;
+  color: var(--cream-dark);
+  margin-top: 6px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--brown-mid);
+  padding: 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(74,40,16,0.18);
+}
+nav a {
+  color: var(--cream-dark);
+  text-decoration: none;
+  display: inline-block;
+  padding: 14px 22px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.2s, background 0.2s;
+}
+nav a:hover {
+  color: var(--gold);
+  background: rgba(255,255,255,0.07);
+}
+nav a.active {
+  color: var(--gold);
+  border-bottom: 3px solid var(--gold);
+}
+
+/* ── HERO ── */
+.hero {
+  height: 420px;
+  background-image: url("pic2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-color: var(--brown-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  text-shadow: 2px 2px 12px rgba(0,0,0,0.7);
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(74,40,16,0.35) 0%, rgba(74,40,16,0.55) 100%);
+}
+.hero-text {
+  position: relative;
+  text-align: center;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+.hero p {
+  font-size: 1.15rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  font-weight: 300;
+  color: var(--cream-dark);
+}
+.hero-btn {
+  display: inline-block;
+  margin-top: 24px;
+  background: var(--gold);
+  color: white;
+  padding: 13px 34px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: background 0.2s;
+}
+.hero-btn:hover { background: var(--brown-light); }
+
+/* ── SECTIONS ── */
+.section { padding: 70px 24px; }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--brown-dark);
+}
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brown-light), var(--gold));
+  margin: 0 auto 40px;
+  border-radius: 2px;
+}
+
+/* ── HIGHLIGHTS (αντί για menu στην index) ── */
+#highlights { background: var(--white); }
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 28px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.highlight-card {
+  background: var(--cream);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border: 1px solid var(--cream-dark);
+  transition: transform 0.22s, box-shadow 0.22s;
+  text-align: center;
+  padding: 36px 20px 28px;
+}
+.highlight-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(74,40,16,0.18);
+}
+.highlight-card .emoji { font-size: 3rem; margin-bottom: 14px; }
+.highlight-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--brown-dark);
+  margin-bottom: 8px;
+}
+.highlight-card p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+.menu-link {
+  display: inline-block;
+  margin-top: 40px;
+  background: var(--brown-mid);
+  color: white;
+  padding: 13px 34px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  transition: background 0.2s;
+}
+.menu-link:hover { background: var(--brown-dark); }
+
+/* ── ABOUT ── */
+#about {
+  background: var(--cream);
+  text-align: center;
+}
+.about-text {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.08rem;
+  color: var(--text-light);
+  line-height: 1.9;
+}
+.about-text b { color: var(--brown-dark); font-weight: 700; }
+
+/* ── CONTACT ── */
+#contact { background: var(--white); text-align: center; }
+.contact-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.contact-card {
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 22px 30px;
+  min-width: 180px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--cream-dark);
+}
+.contact-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
+.contact-card .label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+.contact-card .value {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--brown-dark);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--brown-dark);
+  color: var(--cream-dark);
+  text-align: center;
+  padding: 22px 20px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+  nav a { padding: 12px 12px; font-size: 13px; }
+  .highlights-grid { grid-template-columns: 1fr; }
+  .contact-cards { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Πρωινό Πέρασμα</h1>
+  <p>Το καλύτερο ξεκίνημα της ημέρας</p>
+</header>
+
+<nav>
+  <a href="index.html" class="active">Αρχική</a>
+  <a href="proionta.html">Μενού</a>
+  <a href="#about">Σχετικά</a>
+  <a href="#contact">Επικοινωνία</a>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Καφές &amp; Πρωινό</h1>
+    <p>Φρέσκο · Ποιοτικό · Καθημερινό</p>
+    <a href="proionta.html" class="hero-btn">Δες το Μενού →</a>
+  </div>
+</section>
+
+<!-- ══════════ HIGHLIGHTS ══════════ -->
+<section class="section" id="highlights">
+  <h2 class="section-title">Τι προσφέρουμε</h2>
+  <div class="section-divider"></div>
+
+  <div class="highlights-grid">
+    <div class="highlight-card">
+      <div class="emoji">☕</div>
+      <h3>Καφές</h3>
+      <p>Espresso, Cappuccino, Freddo και πολλά ακόμα</p>
+    </div>
+    <div class="highlight-card">
+      <div class="emoji">🥪</div>
+      <h3>Σάντουιτς</h3>
+      <p>Φρέσκα τοστ και club sandwich κάθε μέρα</p>
+    </div>
+    <div class="highlight-card">
+      <div class="emoji">🥐</div>
+      <h3>Κρουασάν</h3>
+      <p>Βουτύρου, σοκολάτας και γλυκά εποχής</p>
+    </div>
+    <div class="highlight-card">
+      <div class="emoji">🍊</div>
+      <h3>Χυμοί</h3>
+      <p>Φρέσκοι φυσικοί χυμοί και smoothies</p>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:20px;">
+    <a href="proionta.html" class="menu-link">Δες όλο το μενού →</a>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section class="section" id="about">
+  <h2 class="section-title">Σχετικά με εμάς</h2>
+  <div class="section-divider"></div>
+  <p class="about-text">
+    Το <b>Πρωινό Πέρασμα</b> δημιουργήθηκε για να προσφέρει φρέσκο καφέ,
+    νόστιμα σνακ και ένα γρήγορο αλλά ποιοτικό πρωινό για όλους.
+    Κάθε μέρα ξεκινάμε νωρίς για να είμαστε έτοιμοι να σας δώσουμε
+    την καλύτερη αρχή της ημέρας σας.
+  </p>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="section" id="contact">
+  <h2 class="section-title">Επικοινωνία</h2>
+  <div class="section-divider"></div>
+  <div class="contact-cards">
+    <div class="contact-card">
+      <div class="icon">📍</div>
+      <div class="label">Διεύθυνση</div>
+      <div class="value">22 Απριλίου, Πολύγυρος</div>
+    </div>
+    <div class="contact-card">
+      <div class="icon">📞</div>
+      <div class="label">Τηλέφωνο</div>
+      <div class="value">2371111266</div>
+    </div>
+    <div class="contact-card">
+      <div class="icon">🕒</div>
+      <div class="label">Ώρες λειτουργίας</div>
+      <div class="value">06:00 – 16:00</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Πρωινό Πέρασμα &nbsp;·&nbsp; Όλα τα δικαιώματα διατηρούνται</p>
+</footer>
+
+</body>
+</html>
